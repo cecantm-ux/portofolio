@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>♡ Untuk Erni Listia ♡</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;500&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      height: 100vh;
+      background: linear-gradient(135deg, #f8e8d8, #e8d4c4, #d8c0b0);
+      font-family: 'Poppins', sans-serif;
+      color: #6b4e3d;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Pembuka Kado */
+    #opening {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(139,90,60,0.95);
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      padding: 20px;
+    }
+
+    #opening h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 4rem;
+      margin-bottom: 15px;
+    }
+
+    #opening .date {
+      font-size: 1.6rem;
+      margin: 20px 0;
+    }
+
+    .gift-box {
+      font-size: 8rem;
+      cursor: pointer;
+      animation: bounce 2s infinite;
+      margin: 40px 0;
+    }
+
+    @keyframes bounce {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    /* Main Content */
+    .main-content { display: none; flex-direction: column; align-items: center; text-align:center; z-index: 10; }
+    h1 { font-family: 'Dancing Script', cursive; font-size: 4.5rem; color: #8b5a3c; text-shadow: 0 3px 10px rgba(139,90,60,0.2); margin-bottom:10px; }
+    .big-date { font-size: 2rem; color: #a07c63; margin-bottom: 30px; }
+
+    .countdown-box {
+      background: #fff8f0;
+      padding: 20px 35px;
+      border-radius: 50px;
+      box-shadow: 0 10px 30px rgba(139,90,60,0.2);
+      font-size: 1.4rem;
+      font-weight: 500;
+      margin: 30px 0;
+    }
+
+    .choco-icons { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-top: 40px; }
+    .icon {
+      width: 100px; height: 100px;
+      background: #fff8f0;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      box-shadow: 0 10px 30px rgba(139,90,60,0.15);
+    }
+    .icon:hover { transform: translateY(-15px) scale(1.1); box-shadow: 0 20px 40px rgba(139,90,60,0.25); }
+
+    /* Modal */
+    .modal { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(139,90,60,0.92); backdrop-filter: blur(12px);
+      align-items: center; justify-content: center; z-index: 100; padding: 20px;
+    }
+    .modal-content {
+      background: #fffaf5; padding: 50px 30px; border-radius: 30px;
+      max-width: 90%; box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+      text-align: center; animation: pop 0.6s ease;
+    }
+    @keyframes pop { from {transform:scale(0.5); opacity:0;} to {transform:scale(1); opacity:1;} }
+    .ucapan { font-family: 'Dancing Script', cursive; font-size: 2.3rem; color: #8b5a3c; line-height: 1.6; }
+
+    /* Partikel */
+    .particle {
+      position: absolute;
+      font-size: 1.5rem;
+      pointer-events: none;
+      animation: float 15s infinite linear;
+    }
+    @keyframes float {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Pembuka Kado -->
+  <div id="opening">
+    <h1>Erni Listia ♡</h1>
+    <p class="date">16 Januari 2026</p>
+    <div class="gift-box" onclick="openGift()">🎁</div>
+    <p>Klik kadonya yuk, ada surprise manis dari aku spesial buat kamu ♡</p>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content" id="main">
+    <h1>Happy Birthday Erni!</h1>
+    <p class="big-date">16 Januari 2026</p>
+
+    <div class="countdown-box" id="timer">
+      Menuju ulang tahunmu: <br>
+      <span id="display">00 hari 00 jam 00 menit 00 detik</span>
+    </div>
+
+    <p style="margin:30px 0 10px; font-size:1.1rem; color:#a07c63;">
+      Klik coklat-coklat di bawah ini ya, ada ucapan spesial dari aku ˶ᵔ ᵕ ᵔ˶
+    </p>
+
+    <div class="choco-icons">
+      <div class="icon" onclick="showUcap(1)">🍫</div>
+      <div class="icon" onclick="showUcap(2)">🥛</div>
+      <div class="icon" onclick="showUcap(3)">🎂</div>
+      <div class="icon" onclick="showUcap(4)">💝</div>
+      <div class="icon" onclick="showUcap(5)">🌸</div>
+      <div class="icon" onclick="showUcap(6)">✉</div>
+      <div class="icon" onclick="showUcap(7)">🌟</div>
+    </div>
+  </div>
+
+  <!-- Modal Ucapan -->
+  <div class="modal" id="modal">
+    <span style="position:absolute; top:20px; right:30px; font-size:3rem; color:white; cursor:pointer;" onclick="closeModal()">×</span>
+    <div class="modal-content">
+      <p class="ucapan" id="textUcap"></p>
+      <p style="margin-top:25px; color:#a07c63; font-size:1rem;">— Dengan cinta dari sahabatmu yang paling sayang kamu ♡ —</p>
+    </div>
+  </div>
+
+  <!-- Lagu Latar (piano lembut) -->
+  <audio id="bgm" loop autoplay>
+    <source src="https://assets.mixkit.co/sfx/preview/mixkit-happy-and-romantic-piano-2665.mp3" type="audio/mp3">
+  </audio>
+
+  <script>
+    // Tanggal ulang tahun Erni
+    const birthday = new Date("2026-01-16T00:00:00");
+
+    function openGift() {
+      document.getElementById("opening").style.display = "none";
+      document.getElementById("main").style.display = "flex";
+      document.getElementById("bgm").play();
+      startTimer();
+      createParticles();
+    }
+
+    function startTimer() {
+      setInterval(() => {
+        const now = new Date();
+        let diff = birthday - now;
+
+        // Kalau sudah lewat ultah, hitung umur baru
+        if (diff < 0) {
+          document.getElementById("timer").innerHTML = "Erni sekarang sudah berulang tahun! 🎉<br>Selamat ulang tahun yang ke-" + (now.getFullYear() - 2000) + " ya cantikku! ♡";
+          return;
+        }
+
+        const days = Math.floor(diff / (1000*60*60*24));
+        const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+        const minutes = Math.floor((diff % (1000*60*60)) / (1000*60));
+        const seconds = Math.floor((diff % (1000*60)) / 1000);
+
+        document.getElementById("display").innerHTML = 
+          \( {days} hari \){hours} jam \( {minutes} menit \){seconds} detik;
+      }, 1000);
+    }
+
+    const ucapan = [
+      "",
+      "Erni Listia yang paling manis sedunia, bentar lagi ulang tahun ya cantikku! Aku udah nggak sabar rayain bareng kamu ♡",
+      "Kamu tuh kayak susu coklat hangat yang selalu bikin hati aku tenang. Love you forever, bestie! 🥛✨",
+      "16 Januari nanti aku doain semua mimpi kamu jadi kenyataan. Kamu luar biasa banget, Ern! 🎂",
+      "Kado kecil ini cuma secuil dari rasa sayangku yang gede banget ke kamu. Semoga selalu bahagia ya ♡",
+      "Erni Listia, bunga yang selalu mekar paling cantik di hatiku. Mekar terus ya, aku selalu dukung kamu 🌸",
+      "Makasih udah jadi sahabat yang selalu ada buat aku. Kamu rumah kedua aku, Ern ♡",
+      "Semoga tahun baru umurmu penuh coklat kebahagiaan, tawa, dan cinta yang nggak pernah habis! 🌟"
+    ];
+
+    function showUcap(n) {
+      document.getElementById("textUcap").innerHTML = ucapan[n];
+      document.getElementById("modal").style.display = "flex";
+    }
+
+    function closeModal() {
+      document.getElementById("modal").style.display = "none";
+    }
+
+    // Partikel coklat
+    function createParticles() {
+      setInterval(() => {
+        const p = document.createElement("div");
+        p.classList.add("particle");
+        p.innerText = ["🍫","🥛","💝","🌸","✨","🎂"][Math.floor(Math.random()*6)];
+        p.style.left = Math.random() * 100 + "vw";
+        p.style.animationDuration = 10 + Math.random() * 10 + "s";
+        document.body.appendChild(p);
+        setTimeout(() => p.remove(), 20000);
+      }, 700);
+    }
+  </script>
+</body>
+</html>
